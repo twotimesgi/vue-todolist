@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO</title>
+    <title>TODO</title> 
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">        
 </head>
 <body>
-    <main class="container">
+    <main id="app" class="container">
         <div class="container__top">
-            <input class="add-task__input" type="text">
-            <button class="add-task__button button--addtask">Add Task</button>
+            <input placeholder="New task" v-model="newTask" class="add-task__input" type="text">
+            <button class="add-task__button button--addtask" @click="addTask">Add Task</button>
+            <div> {{ error }}</div>
         </div>
         <div class="container__main">
             <section>
                 <!-- <h2>&#9662; New Task</h2> -->
-                <div class="task">
-                    <span class="task__icon task__icon--check">&#10003;</span>
-                    <span class="task__text">Quarterly Newsletter</span>
+                <div v-for="task in todoTasks" class="task">
+                    <div>
+                    <span class="task__icon" @click="toggleTask(task)" :class="task.isDone ? 'task__icon--check' : ''"></span>
+                    <span class="task__text">{{ task.text }}</span>
+                    </div>
+                    <div class="delete-btn" @click="deleteTask(task)"></div>
                 </div>
-            </section>
+     
+            </section> 
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
