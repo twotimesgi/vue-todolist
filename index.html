@@ -13,7 +13,7 @@
 <body>
     <main id="app" class="container">
         <div class="container__top">
-            <input placeholder="New task" v-model="newTask" class="add-task__input" type="text">
+            <input placeholder="New task" v-model="newTask"  @keydown.enter="addTask" class="add-task__input" type="text">
             <button class="add-task__button button--addtask" @click="addTask">Add Task</button>
             <div class="error-message"> {{ error }}</div>
         </div>
