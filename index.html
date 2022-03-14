@@ -15,11 +15,11 @@
         <div class="container__top">
             <input placeholder="New task" v-model="newTask" class="add-task__input" type="text">
             <button class="add-task__button button--addtask" @click="addTask">Add Task</button>
-            <div> {{ error }}</div>
+            <div class="error-message"> {{ error }}</div>
         </div>
         <div class="container__main">
             <section>
-                <!-- <h2>&#9662; New Task</h2> -->
+                <div class="task" v-if="todoTasks.length == 0">There are no tasks to do. Great job!</div>
                 <div v-for="task in todoTasks" class="task">
                     <div>
                     <span class="task__icon" @click="toggleTask(task)" :class="task.isDone ? 'task__icon--check' : ''"></span>
