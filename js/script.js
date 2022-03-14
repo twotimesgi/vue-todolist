@@ -20,7 +20,7 @@ var app = new Vue({
         },
         addTask(){ 
             if(this.addTaskCheck()){
-                this.todoTasks.push({ text: this.newTask, isDone: false});
+                this.todoTasks.unshift({ text: this.newTask, isDone: false});
                 this.newTask = "";
             } 
         },
