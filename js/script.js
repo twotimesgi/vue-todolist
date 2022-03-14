@@ -32,13 +32,14 @@ var app = new Vue({
             
             let alredyExists = false;
             this.todoTasks.forEach((task)=>{
-                if (task.text == this.newTask) alredyExists = true;
+                if (task.text.toLowerCase() == this.newTask.toLowerCase()) alredyExists = true;
             });
 
             if(alredyExists){
                 this.error = 'Error, This task alredy exists.'
                 return false;
             }
+            this.error = '';
             return true;
         },
         deleteTask(task){
